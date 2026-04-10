@@ -1,464 +1,344 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JohnyVest - Be a Gentle Investor</title>
+    <title>JohnyVest - Modern Investing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* General body styling */
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --bg-body: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --overlay: rgba(15, 23, 42, 0.6);
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f5f1;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
             margin: 0;
-            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .logo {
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -1px;
+            color: var(--primary-dark);
+        }
+
+        .slogan {
+            color: var(--text-muted);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        input[type="text"], input[type="tel"] {
+            width: 100%;
+            padding: 12px 16px;
+            margin: 10px 0;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
             box-sizing: border-box;
         }
 
-        /* Header styling */
-        header {
-            background: linear-gradient(to right, #4CAF50, #3e8e41);
+        button {
+            background-color: var(--primary);
             color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        header .logo {
-            width: 200px;
-            height: 10;
-            margin-bottom: 10px;
-        }
-
-        /* Slogan styling */
-        .slogan {
-            font-style: italic;
-            font-size: 1.1rem;
-            font-weight: lighter;
-            margin-top: 0;
-        }
-
-        /* Main section styling */
-        main {
-            padding: 40px 10%;
-        }
-
-        /* Title for sections */
-        h2 {
-            font-size: 2rem;
-            color: #333;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        /* Section styling */
-        .signup-section, .investment-info, .investment-options, .picture-gallery, .cta {
-            background-color: #fff;
-            border-radius: 10px;
-            margin: 20px 0;
-            padding: 30px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Signup Section Styling */
-        #signup-section {
-            display: block;
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        #signup-section h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        #signup-section input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        /* Investment Opportunities Section */
-        .investment-options {
-            display: none; /* Hide until signup is complete */
-        }
-
-        .investment-item {
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            padding: 20px;
-            width: 30%;
-            margin-bottom: 20px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .investment-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .investment-item img {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 15px;
-        }
-
-        .investment-item h3 {
-            font-size: 1.5rem;
-            color: #4CAF50;
-            margin-bottom: 10px;
-        }
-
-        .investment-item p {
-            color: #555;
-            font-size: 1rem;
-            margin-bottom: 15px;
-        }
-
-        .investment-item button {
-            background-color: #4CAF50;
-            color: white;
+            padding: 12px 24px;
             border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: all 0.2s ease;
+            width: 100%;
         }
 
-        .investment-item button:hover {
-            background-color: #45a049;
+        button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
         }
 
-        /* Picture Section Styling */
-        .picture-gallery {
-            display: none; /* Hide until signup is complete */
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: space-between;
+        /* Investment Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .picture-item {
             background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 30%;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f1f5f9;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
         }
 
         .picture-item img {
             width: 100%;
-            height: auto;
+            height: 180px;
+            object-fit: cover;
             border-radius: 8px;
-        }
-
-        .picture-item p {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #4CAF50;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .picture-item button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            width: 100%;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 0 0 10px 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        .picture-item button:hover {
-            background-color: #45a049;
-        }
-
-        .picture-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Payment Section Styling */
-        #payment-section {
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-
-        #payment-section h2 {
-            font-size: 2rem;
             margin-bottom: 15px;
         }
 
-        #payment-section p {
-            font-size: 1.1rem;
-            margin: 15px 0;
+        .id-bar-container {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #e2e8f0;
         }
 
-        #payment-section button {
-            background-color: #f44336;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            font-size: 1rem;
+        .id-input {
+            margin-bottom: 5px !important;
+            font-size: 0.85rem !important;
+            text-align: center;
+        }
+
+        .btn-verify {
+            background: #f1f5f9;
+            color: var(--text-main);
+            font-size: 0.8rem;
+            padding: 8px;
+        }
+
+        /* --- NEW MODERN MODAL (The Nice Web Page Popup) --- */
+        #custom-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            height: 100%;
+            background: var(--overlay);
+            backdrop-filter: blur(4px);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
         }
 
-        #payment-section button:hover {
-            background-color: #e53935;
-        }
-
-        /* Call to Action Section */
-        .cta {
-            background-color: #ffeb3b;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        .modal-content {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            max-width: 400px;
+            width: 90%;
             text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
+            animation: slideIn 0.3s ease-out;
         }
 
-        .cta button {
-            background-color: #ff9800;
-            color: white;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border-radius: 5px;
-            border: none;
-            transition: background-color 0.3s ease;
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        .cta button:hover {
-            background-color: #fb8c00;
+        .modal-content h3 {
+            color: var(--primary-dark);
+            margin-top: 0;
         }
 
-        /* Footer Styling */
-        footer {
-            background-color: #4CAF50;
-            color: white;
+        .modal-info {
+            background: #f8fafc;
             padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            text-align: left;
+            font-size: 0.95rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .modal-info p { margin: 5px 0; }
+
+        .btn-close {
+            background: var(--text-main);
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
             text-align: center;
-            font-size: 1rem;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            main {
-                padding: 20px;
-            }
-
-            .investment-item, .picture-item {
-                width: 48%;
-            }
-
-            .cta button {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .investment-item, .picture-item {
-                width: 100%;
-            }
-
-            .cta button {
-                padding: 15px 20px;
-                font-size: 1rem;
-            }
-        }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
+
+    <div id="custom-modal-overlay">
+        <div class="modal-content">
+            <h3>Account Verified</h3>
+            <div class="modal-info">
+                <p><strong>Name:</strong> Ibrahim Abdul Hanan</p>
+                <p><strong>MoMo:</strong> +0556079800</p>
+                <p><strong>D.O.B:</strong> 12/12/2008</p>
+                 <p><strong>you will recieve your money within 24hr  to 48hrs       :</strong> 
+            </div>
+            <p style="color: #ef4444; font-size: 0.85rem; font-weight: 600;">System is currently under review</p>
+            <button class="btn-close" onclick="closeModal()">Close Window</button>
+        </div>
+    </div>
+
     <header>
-        <img src="jv.jpg" alt="JohnyVest Logo" class="logo"> <!-- Replace with actual logo -->
+        <img src="jv.jpg" alt="JohnyVest Logo" class="logo">
         <h1>JohnyVest</h1>
-        <p class="slogan">BE A GENTLE INVESTOR</p>
+        <p class="slogan">Be a Gentle Investor</p>
     </header>
+
     <main>
         <section id="signup-section">
-            <h2>Sign Up</h2>
-            <input type="text" id="username" placeholder="Username" required />
-            <input type="text" id="phone" placeholder="Phone Number" required />
-            <button onclick="submitSignup()">Sign Up</button>
+            <h2>Create Account</h2>
+            <input type="text" id="username" placeholder="Full Name">
+            <input type="tel" id="phone" placeholder="Phone Number">
+            <button onclick="submitSignup()">Get Started</button>
         </section>
 
-        <section class="investment-info" style="display:none;">
-            <h2>Welcome to JohnyVest</h2>
-            <p>Your trusted platform to grow your wealth gently and wisely.</p>
-			<p>Johnyvest is a smart investment platform that connects individuals with companies seeking growth funds. Our goal is simple — help people invest and earn high
-			interest while supporting businesses that need capital. We ensure transparency, security, and a user-friendly experience, making it easy for both beginners and experienced
-			investors to grow their money. At Johnyvest, we believe in building wealth through smart, collaborative investing.<p/>
-			<p>Chat with us on 053 637 8844 / 024 698 1276 for guidance on smart investments.<p/>
+        <section id="picture-gallery" class="hidden">
+            <h2>Available for Investment</h2>
+            <div class="gallery" id="gallery-container">
+                <script>
+                    const items = [
+                        { img: 'rl.jpg', price: 20 }, { img: 'eb.jpg', price: 40 },
+                        { img: 'gn.jpg', price: 60 }, { img: 'dt.jpg', price: 80 },
+                        { img: 'dr.jpg', price: 100 }, { img: 'tv.jpg', price: 120 },
+                        { img: 'sl.jpg', price: 140 }, { img: 'gr.jpg', price: 160 },
+                        { img: 'ac.jpg', price: 180 }, { img: 'lp.png', price: 200 }
+                    ];
 
-
-        </section>
-
-        <!-- Investment Opportunities Section -->
-        <section class="investment-options" style="display:none;">
-            <h2>Explore Our Investment Opportunities</h2>
-            
-            <div class="investment-item">
-                <img src="a.jpg" alt="Stocks Icon">
-                <h3>Stocks</h3>
-                <p>Invest in the world’s leading companies and earn through capital appreciation and dividends.</p>
-                <button onclick="window.location.href='stocks.html'">Learn More</button>
-            </div>
-
-            <div class="investment-item">
-                <img src="b.jpg" alt="Bonds Icon">
-                <h3>Bonds</h3>
-                <p>Earn a fixed income by lending to governments or corporations through bonds.</p>
-                <button onclick="window.location.href='bonds.html'">Learn More</button>
-            </div>
-
-            <div class="investment-item">
-                <img src="re.jpg" alt="Real Estate Icon">
-                <h3>Real Estate</h3>
-                <p>Invest in property to generate rental income or capital appreciation in the real estate market.</p>
-                <button onclick="window.location.href='real-estate.html'">Learn More</button>
-            </div>
-
-            <div class="investment-item">
-                <img src="m.jpg" alt="Mutual Funds Icon">
-                <h3>Mutual Funds</h3>
-                <p>Invest in a pool of funds managed by professionals, diversifying your portfolio.</p>
-                <button onclick="window.location.href='mutual-funds.html'">Learn More</button>
+                    const container = document.currentScript.parentElement;
+                    items.forEach(item => {
+                        container.innerHTML += `
+                            <div class="picture-item">
+                                <img src="${item.img}" alt="Asset">
+                                <h3>GHC ${item.price}</h3>
+                                <button onclick="showPayment(${item.price})">INVEST</button>
+                                
+                                <div class="id-bar-container">
+                                    <input type="text" class="id-input" placeholder="Enter ID Bar">
+                                    <button class="btn-verify" onclick="checkID(this)">Verify Account</button>
+                                </div>
+                            </div>
+                        `;
+                    });
+                </script>
             </div>
         </section>
 
-        <section class="picture-gallery" style="display:none;">
-            <h2>Available items for investment</h2>
-            <div class="gallery">
-                <!-- Picture items up to 10 with prices increasing by GHC 20 -->
-                <div class="picture-item">
-                    <img src="rl.jpg" alt="Picture 1">
-                    <p>Price: GHC 20</p>
-                    <button onclick="showPayment(20)">INVEST</button>
-                </div>
-                <div class="picture-item">
-                    <img src="eb.jpg" alt="Picture 2">
-                    <p>Price: GHC 40</p>
-                    <button onclick="showPayment(40)">INVEST</button>
-                </div>
-                <div class="picture-item">
-                    <img src="gn.jpg" alt="Picture 3">
-                    <p>Price: GHC 60</p>
-                    <button onclick="showPayment(60)">INVEST</button>
-                </div>
-                <div class="picture-item">
-                    <img src="dt.jpg" alt="Picture 4">
-                    <p>Price: GHC 80</p>
-                    <button onclick="showPayment(80)">INVEST</button>
-                </div>
-                <div class="picture-item">
-                    <img src="dr.jpg" alt="Picture 5">
-                    <p>Price: GHC 100</p>
-                    <button onclick="showPayment(100)">INVEST</button>
-                </div>
-                <div class="picture-item">
-                    <img src="tv.jpg" alt="Picture 6">
-                    <p>Price: GHC 120</p>
-                    <button onclick="showPayment(120)">INVEST</button>
-                </div>
-                <div class="picture-item">
-                    <img src="sl.jpg" alt="Picture 7">
-                    <p>Price: GHC 140</p>
-                    <button onclick="showPayment(140)">INVEST</button>
-                </div>
-                <div class="picture-item">
-                    <img src="gr.jpg" alt="Picture 8">
-                    <p>Price: GHC 160</p>
-                    <button onclick="showPayment(160)">INVEST</button>
-                </div>
-                <div class="picture-item">
-                    <img src="ac.jpg" alt="Picture 9">
-                    <p>Price: GHC 180</p>
-                    <button onclick="showPayment(180)">INVEST/15% intere</button>
-                </div>
-                <div class="picture-item">
-                    <img src="lp.png" alt="Picture 10">
-                    <p>Price: GHC 200</p>
-                    <button onclick="showPayment(200)">INVEST</button>
-                </div>
-            </div>
-        </section>
-        
-        <section id="payment-section" style="display:none;">
-            <h2>Payment Information</h2>
+        <section id="payment-section" class="hidden">
+            <h2>Payment Details</h2>
             <p id="payment-message"></p>
-            <p>Please pay the amount through Mobile Money (MoMo) to the following number after paying copy the transaction id and paste it bellow:</p>
-            <p><strong>0536378844</strong></p>
-            <input type="text" id="transaction-id" placeholder="Enter Transaction ID" />
-            <button onclick="submitTransaction()">Submit Transaction ID</button>
-            <button onclick="hidePayment()">Back to Gallery</button>
-        </section>
-
-        <section class="cta" style="display:none;">
-            <h2>Start Investing Today</h2>
-            <button onclick="showInvestmentOptions()">Explore Investments</button>
+            <div style="background: #f0fdf4; padding: 20px; border-radius: 12px; margin: 20px 0; text-align: center;">
+                <p>Transfer via MoMo to:</p>
+                <p style="font-size: 1.5rem; font-weight: 700; color: var(--primary-dark);">0536378844</p>
+            </div>
+            <input type="text" id="transaction-id" placeholder="Enter Transaction ID">
+            <button onclick="submitTransaction()">Submit Payment</button>
+            <button onclick="hidePayment()" style="background:none; color: var(--text-muted); margin-top: 10px;">Back to Assets</button>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 JohnyVest. All rights reserved.</p>
-        <p>&copy; facing any problem chat 0536378844 / whatsapp only</p>
+        <p>&copy; 2026 JohnyVest. All rights reserved.</p>
+        <p>WhatsApp: 0536378844</p>
     </footer>
 
     <script>
-        function showPayment(amount) {
-            document.getElementById('payment-message').innerText = 'You are about to pay: GHC ' + amount;
-            document.getElementById('payment-section').style.display = 'block';
-            document.querySelector('.picture-gallery').style.display = 'none';
-        }
-
-        function hidePayment() {
-            document.getElementById('payment-section').style.display = 'none';
-            document.querySelector('.picture-gallery').style.display = 'block';
-        }
-
-        function showInvestmentOptions() {
-            document.getElementById('signup-section').style.display = 'none';
-            document.querySelector('.investment-info').style.display = 'block';
-            document.querySelector('.investment-options').style.display = 'block';
-            document.querySelector('.picture-gallery').style.display = 'block';
-            document.querySelector('.cta').style.display = 'block';
-        }
-
-        function submitTransaction() {
-            const transactionId = document.getElementById('transaction-id').value;
-            if (transactionId) {
-                alert('Transaction ID ' + transactionId + ' submitted successfully.');
-                hidePayment();
+        // LOGIC FOR THE SECRET CODE AND MODAL
+        function checkID(btn) {
+            const input = btn.previousElementSibling;
+            const secretCode = "ha1144";
+            
+            if (input.value === secretCode) {
+                // Open the nice modern modal instead of an alert
+                document.getElementById('custom-modal-overlay').style.display = 'flex';
+            } else if (input.value === "") {
+                alert("Please enter an ID.");
             } else {
-                alert('Please enter a transaction ID.');
+                alert("Incorrect ID.");
             }
         }
 
+        function closeModal() {
+            document.getElementById('custom-modal-overlay').style.display = 'none';
+        }
+
         function submitSignup() {
-            const username = document.getElementById('username').value;
-            const phone = document.getElementById('phone').value;
-            if (username && phone) {
-                alert('Signup successful for ' + username + ' with phone ' + phone);
-                showInvestmentOptions();
+            const user = document.getElementById('username').value;
+            if (user) {
+                document.getElementById('signup-section').classList.add('hidden');
+                document.getElementById('picture-gallery').classList.remove('hidden');
             } else {
-                alert('Please fill out all fields.');
+                alert("Please fill all fields.");
+            }
+        }
+
+        function showPayment(amount) {
+            document.getElementById('payment-message').innerText = 'Amount: GHC ' + amount;
+            document.getElementById('payment-section').classList.remove('hidden');
+            document.getElementById('picture-gallery').classList.add('hidden');
+            window.scrollTo(0,0);
+        }
+
+        function hidePayment() {
+            document.getElementById('payment-section').classList.add('hidden');
+            document.getElementById('picture-gallery').classList.remove('hidden');
+        }
+
+        function submitTransaction() {
+            const tid = document.getElementById('transaction-id').value;
+            if (tid) {
+                alert('Sent for verification.');
+                hidePayment();
+            } else {
+                alert('Enter Transaction ID.');
             }
         }
     </script>
 </body>
-
-</html
+</html>
