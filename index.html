@@ -8,10 +8,13 @@
         body {
             background-color: #e0e0e0;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Allows sections to stack vertically */
+            align-items: center;
             padding: 40px 20px;
             font-family: 'Times New Roman', Times, serif;
         }
+        
+        /* The main apology document */
         .document {
             background-color: #f4f1ea;
             width: 100%;
@@ -20,7 +23,33 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             color: #1a1a1a;
             line-height: 1.5;
+            margin-bottom: 30px; /* Space between paper and video */
         }
+
+        /* Separate Video Section */
+        .video-section {
+            width: 100%;
+            max-width: 700px;
+            background-color: #333; /* Darker background to contrast the paper */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .video-section h2 {
+            color: #fff;
+            font-family: Arial, sans-serif;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 4px;
+            display: block;
+        }
+
         .header-box {
             border: 1px solid #333;
             margin-bottom: 30px;
@@ -30,12 +59,8 @@
         .header-box img {
             max-width: 100%;
             height: auto;
-            border: 1px solid #ddd;
         }
-        .date {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+        .date { font-weight: bold; margin-bottom: 10px; }
         .title {
             text-align: center;
             font-weight: bold;
@@ -43,13 +68,8 @@
             margin-bottom: 25px;
             font-size: 1.1em;
         }
-        p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        .footer {
-            margin-top: 40px;
-        }
+        p { margin-bottom: 15px; text-align: justify; }
+        .footer { margin-top: 40px; }
         .signature {
             font-family: 'Brush Script MT', cursive;
             font-size: 1.4em;
@@ -58,17 +78,14 @@
             min-width: 200px;
             margin-bottom: 5px;
         }
-        .info-line {
-            margin: 5px 0;
-            font-weight: bold;
-        }
+        .info-line { margin: 5px 0; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="document">
     <div class="header-box">
-        <img src=" IM0428-WA0016G-2026.jpg" alt="Abraham Atiah">
+        <img src="IM0428-WA0016G-2026.jpg" alt="Abraham Atiah">
     </div>
 
     <div class="date">Date: April 25, 2026</div>
@@ -79,23 +96,29 @@
 
     <p>Following a personal dispute, I allowed my judgment to be clouded by hostility. In an act of grave indiscretion, I utilized artificial intelligence tools to fabricate and disseminate fake images of Hamilton Azure on the 18th day of April 2025 via social media.</p>
 
-    <p>I wish to state clearly to my peers and the general public: These images are entirely untrue. They bear no basis in reality and were manufactured solely by me to disparage his character. "I confirm that these images were artificially generated and do not represent any real-world event or private photo of the individual mentioned."</p>
+    <p>I wish to state clearly to my peers and the general public: These images are entirely untrue. They bear no basis in reality and were manufactured solely by me to disparage his character.</p>
 
-    <p>I acknowledge that my actions constitute a severe violation of privacy. No grievance justifies the creation of such harmful content. I have caused undue distress to Hamilton and his family, and I am deeply sorry for the negative attention brought toward his school, Opoku Ware Senior High.</p>
+    <p>I acknowledge that my actions constitute a severe violation of privacy. No grievance justifies the creation of such harmful content. I have caused undue distress to Hamilton and his family, and I am deeply sorry for the negative attention brought toward his school.</p>
 
-    <p>Following this, I shall publish this public statement of retraction on the social media site where I posted these visuals, and they shall remain there indefinitely. I have taken full responsibility for this transgression and have removed all related content. I would also seize this opportunity to appeal to friends, relations and other social media platforms that these visuals might have been shared, to be discarded and further sharing should be discontinued with immediate effect.</p>
+    <p>I have taken full responsibility for this transgression and have removed all related content. I appeal to all those who may have shared the visuals to discard them immediately.</p>
 
-    <p>I humbly ask for forgiveness from those I have wronged and am committed to ensuring that this act of mine will not happen again.</p>
+    <p>I humbly ask for forgiveness and am committed to ensuring that this will not happen again.</p>
 
     <div class="footer">
         <p>Respectfully,</p>
-        <div class="info-line">Sign: <span class="signature">Abraham Atiah</span></div>
-        <div class="info-line">Full Name: Abraham Atiah</div>
-        <div class="info-line">Full Address: P.O. Box 1234, Accra</div>
-        <div class="info-line">House Number: H/No. 12B</div>
-        <div class="info-line">Mobile Contact: 0536378844</div>
+        <div class="info-line"><span class="signature">𝓪𝓽𝓲𝓪</span></div>
+        <div class="info-line">Abraham Atiah</div>
+        <div class="info-line">0536378844</div>
     </div>
 </div>
 
+<div class="video-section">
+    <h2>Video Evidence / Verification</h2>
+    <video controls>
+        <source src="v.mp4.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
 </body>
-</html>   
+</html>
